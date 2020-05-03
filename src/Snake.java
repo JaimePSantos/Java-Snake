@@ -17,10 +17,19 @@ public class Snake {
         this.direction = newDirection;
     }
 
+    public boolean contains(int x, int y){
+        for(Pair pair : this.body){
+            if(pair.getX().equals(x) && pair.getY().equals(y)){
+                return true;
+            }
+        }
+        return false;
+
+    }
+
     public void initSnake(int x ,int y){
         this.grow(x,y);
         this.grow(x+1,y);
-        this.grow(x+1,y+1);
     }
 
     public void grow(int x, int y){
