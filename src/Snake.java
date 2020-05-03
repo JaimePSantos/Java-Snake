@@ -12,9 +12,15 @@ public class Snake {
         this.body = new ArrayList();
         this.direction = new Pair();
     }
-    public Snake(List<Pair<Integer,Integer>> newBody,Pair<Integer,Integer> newDirection ){
+    public Snake(List<Pair<Integer,Integer>> newBody, Pair<Integer,Integer> newDirection ){
         this.body = newBody;
         this.direction = newDirection;
+    }
+
+    public void initSnake(int x ,int y){
+        this.grow(x,y);
+        this.grow(x+1,y);
+        this.grow(x+1,y+1);
     }
 
     public void grow(int x, int y){
@@ -41,7 +47,11 @@ public class Snake {
         return this.body.get(0);
     }
 
-
+    public List<Pair<Integer,Integer>> getBody(){
+        List<Pair<Integer,Integer>> noHead = this.body;
+        noHead.remove(0);
+        return noHead;
+    }
     public String toString(){
         String coords="";
         for(Pair pair : this.body){
