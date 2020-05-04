@@ -38,8 +38,6 @@ public class Board {
     }
 
     public String[][] loadBoard() {
-//        this.setSnake();
-//        System.out.println(this.snake.toString());
         for (int i = 0; i < this.board.length; i++) {
             for (int j = 0; j < this.board[i].length; j++) {
 
@@ -52,7 +50,6 @@ public class Board {
                     }
                     if ( j > 0 && j < this.board[i].length - 1 ) {
                         this.board[i][j] = "-";
-                        System.out.println("Ola");
                     }
                 }
 

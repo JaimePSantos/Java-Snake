@@ -1,3 +1,4 @@
+import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
@@ -18,25 +19,15 @@ public class Game {
     public void init(int boardHeight, int boardWidth) {
         this.board.setBoard(boardHeight, boardWidth);
         int x = ThreadLocalRandom.current().nextInt(1, boardWidth - 2);
-        System.out.println("Test1");
         int y = ThreadLocalRandom.current().nextInt(1, boardHeight - 2);
-        System.out.println("Test2");
         this.snake.initSnake(y, x);
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.loadedBoard = this.board.loadBoard();
-        for (int i = 0; i < this.boardHeight; i++) {
-            for (int j = 0; j < this.boardWidth; j++) {
-                System.out.print(this.loadedBoard[i][j]);
-//                System.out.println("Test3");
 
-            }
-        }
     }
 
     public String[][] render() {
-//        int rows = this.board.loadBoard().length;
-//        int columns = this.board.loadBoard()[0].length;
         for (int i = 0; i < this.loadedBoard.length; i++) {
             for (int j = 0; j < this.loadedBoard[i].length; j++) {
                 if ( j > 0 && j < this.loadedBoard[i].length - 1 ) {
@@ -52,6 +43,19 @@ public class Game {
 
         }
         return this.loadedBoard;
+    }
+
+    public void clear(){
+        this.board.loadBoard();
+    }
+
+    public void moveTest(String input){
+        this.render();
+        this.printGame();
+        this.snake.move(input);
+        this.clear();
+        this.render();
+        this.printGame();
     }
 
     public void printGame() {

@@ -14,5 +14,13 @@ public class App {
         game.init(10,10);
         System.out.println("Test5");
         game.printGame();
+        Scanner scan = new Scanner(System.in);
+        game.moveTest(scan.nextLine());
+        game.moveTest(scan.nextLine());
+        game.moveTest(scan.nextLine());
+        game.moveTest(scan.nextLine());
+        game.moveTest(scan.nextLine());
+        game.moveTest(scan.nextLine());
+        game.moveTest(scan.nextLine());
     }
 }
