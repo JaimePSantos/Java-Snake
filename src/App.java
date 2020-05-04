@@ -7,7 +7,12 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         Board board = new Board();
         board.setBoard(10,40);
-        board.loadBoard();
-        board.printBoard();
+//        board.loadBoard();
+//        board.printBoard();
+        Game game = new Game();
+        System.out.println("Test4");
+        game.init(10,10);
+        System.out.println("Test5");
+        game.printGame();
     }
 }

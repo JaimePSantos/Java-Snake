@@ -38,8 +38,8 @@ public class Board {
     }
 
     public String[][] loadBoard() {
-        this.setSnake();
-        System.out.println(this.snake.toString());
+//        this.setSnake();
+//        System.out.println(this.snake.toString());
         for (int i = 0; i < this.board.length; i++) {
             for (int j = 0; j < this.board[i].length; j++) {
 
@@ -52,6 +52,7 @@ public class Board {
                     }
                     if ( j > 0 && j < this.board[i].length - 1 ) {
                         this.board[i][j] = "-";
+                        System.out.println("Ola");
                     }
                 }
 
@@ -63,16 +64,7 @@ public class Board {
                         this.board[i][j] = "|\n";
                     }
                     if ( j > 0 && j < this.board[i].length - 1 ) {
-                        if ( this.snake.contains(i, j) ) {
-                            if ( this.snake.head().getX().equals(i) && this.snake.head().getY().equals(j) ) {
-                                this.board[i][j] = "X";
-                            } else {
-                                this.board[i][j] = "0";
-                            }
-                        } else {
-                            this.board[i][j] = " ";
-
-                        }
+                        this.board[i][j] = " ";
                     }
                 }
             }
