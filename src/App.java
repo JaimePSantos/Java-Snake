@@ -7,20 +7,26 @@ public class App {
         Scanner scanner = new Scanner(System.in);
         Board board = new Board();
         board.setBoard(10,40);
+        board.colBoard();
+        board.printColBoard();
+
+
 //        board.loadBoard();
 //        board.printBoard();
-        Game game = new Game();
-        System.out.println("Test4");
-        game.init(10,10);
-        System.out.println("Test5");
-        game.printGame();
-        Scanner scan = new Scanner(System.in);
-        game.moveTest(scan.nextLine());
-        game.moveTest(scan.nextLine());
-        game.moveTest(scan.nextLine());
-        game.moveTest(scan.nextLine());
-        game.moveTest(scan.nextLine());
-        game.moveTest(scan.nextLine());
-        game.moveTest(scan.nextLine());
+
+
+
+//        Game game = new Game();
+//        game.init(10,20);
+//        game.printGame();
+//        Scanner scan = new Scanner(System.in);
+//        while(true){
+//            String input = scan.nextLine();
+//            if(input.equals("q")){
+//                break;
+//            }
+//            game.moveTest(input);
+//
+//        }
     }
 }

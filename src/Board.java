@@ -5,6 +5,7 @@ public class Board {
     private int height;
     private int width;
     private String[][] board;
+    private int[][] colBoard;
     private Snake snake;
     private List<Pair<Integer, Integer>> snake2;
 
@@ -14,6 +15,8 @@ public class Board {
         this.board = new String[this.height][this.width];
         this.snake = new Snake();
         this.snake2 = null;
+        this.colBoard = new int[this.height][this.width];
+
 
     }
 
@@ -21,6 +24,7 @@ public class Board {
         this.height = newHeight;
         this.width = newWidth;
         this.board = new String[this.height][this.width];
+        this.colBoard = new int[this.height][this.width];
     }
 
     public void setSnake() {
@@ -70,11 +74,44 @@ public class Board {
         return this.board;
     }
 
+    public int[][] colBoard(){
+
+//        1 = +; 2 = - ; 3 = |
+        for (int i = 0; i < this.height; i++) {
+            for (int j = 0; j < this.width; j++) {
+                if(i==0||i==this.height-1){
+                    if(j==0||j==this.width-1){
+                        this.colBoard[i][j] = 1;
+
+                    } else{
+                        this.colBoard[i][j] = 2;
+                    }
+                }
+                if(i>0 && i<this.height-1){
+                    if(j==0 || j==this.width-1){
+                        this.colBoard[i][j]=3;
+                    }
+                }
+            }
+        }
+
+        return this.colBoard;
+    }
+
     public void printBoard() {
         for (int i = 0; i < this.height; i++) {
             for (int j = 0; j < this.width; j++) {
                 System.out.print(this.board[i][j]);
             }
+        }
+    }
+
+    public void printColBoard() {
+        for (int i = 0; i < this.height; i++) {
+            for (int j = 0; j < this.width; j++) {
+                System.out.print(this.colBoard[i][j]);
+            }
+            System.out.println("");
         }
     }
 

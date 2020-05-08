@@ -71,7 +71,7 @@ public class Snake {
             this.direction.setY(0);
             this.direction.setX(-1);
 
-        }else if(input.equals("aw")){
+        }else if(input.equals("a")){
             this.direction.setY(-1);
             this.direction.setX(0);
 
