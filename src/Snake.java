@@ -31,6 +31,7 @@ public class Snake {
     public void initSnake(int x ,int y){
         this.grow(x,y);
         this.grow(x+1,y);
+        this.grow(x+2,y);
     }
 
     public void grow(int x, int y){
@@ -85,6 +86,7 @@ public class Snake {
         int k = this.body.get(0).getY();
         this.takeStep(x+j,y+k);
     }
+
     public String toString(){
         String coords="";
         for(Pair pair : this.body){

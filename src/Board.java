@@ -6,15 +6,11 @@ public class Board {
     private int width;
     private String[][] board;
     private int[][] colBoard;
-    private Snake snake;
-    private List<Pair<Integer, Integer>> snake2;
 
     public Board() {
         this.height = 0;
         this.width = 0;
         this.board = new String[this.height][this.width];
-        this.snake = new Snake();
-        this.snake2 = null;
         this.colBoard = new int[this.height][this.width];
 
 
@@ -27,11 +23,11 @@ public class Board {
         this.colBoard = new int[this.height][this.width];
     }
 
-    public void setSnake() {
-        int x = ThreadLocalRandom.current().nextInt(1, this.width - 2);
-        int y = ThreadLocalRandom.current().nextInt(1, this.height - 2);
-        this.snake.initSnake(y, x);
-    }
+//    public void setSnake() {
+//        int x = ThreadLocalRandom.current().nextInt(1, this.width - 2);
+//        int y = ThreadLocalRandom.current().nextInt(1, this.height - 2);
+//        this.snake.initSnake(y, x);
+//    }
 
     public int getHeight() {
         return this.height;
