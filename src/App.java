@@ -17,7 +17,7 @@ public class App {
 
 
         Game game = new Game();
-        game.init(10,20);
+        game.init(10,10);
 //        game.printColBoard();
         game.printGame();
         Scanner scan = new Scanner(System.in);

@@ -86,10 +86,12 @@ public class Board {
                     } else{
                         this.colBoard[i][j] = 2;
                     }
-                }
-                if(i>0 && i<this.height-1){
+                }else if(i>0 && i<this.height-1){
                     if(j==0 || j==this.width-1){
                         this.colBoard[i][j]=3;
+                    }
+                    if(j>0 && j<this.width-1){
+                        this.colBoard[i][j]=0;
                     }
                 }
             }

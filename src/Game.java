@@ -21,9 +21,6 @@ public class Game {
 
     public void init(int boardHeight, int boardWidth) {
         this.board.setBoard(boardHeight, boardWidth);
-        int x = ThreadLocalRandom.current().nextInt(1, boardWidth - 2);
-        int y = ThreadLocalRandom.current().nextInt(1, boardHeight - 2);
-        this.snake.initSnake(y, x);
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.loadedBoard = this.board.loadBoard();
@@ -94,17 +91,17 @@ public class Game {
             for (int j = 0; j < this.boardWidth; j++) {
 
                 if ( this.colBoard[i][j] == 0 ) {
-                    this.loadedBoard[i][j] = " ";
+                    this.loadedBoard[i][j] = "  ";
                 } else if ( this.colBoard[i][j] == 1 ) {
-                    this.loadedBoard[i][j] = "+";
+                    this.loadedBoard[i][j] = "+ ";
                 } else if ( this.colBoard[i][j] == 2 ) {
-                    this.loadedBoard[i][j] = "-";
+                    this.loadedBoard[i][j] = "- ";
                 } else if ( this.colBoard[i][j] == 3 ) {
-                    this.loadedBoard[i][j] = "|";
+                    this.loadedBoard[i][j] = "| ";
                 } else if ( this.colBoard[i][j] == 4 ) {
-                    this.loadedBoard[i][j] = "X";
+                    this.loadedBoard[i][j] = "X ";
                 } else if ( this.colBoard[i][j] == 5 ) {
-                    this.loadedBoard[i][j] = "O";
+                    this.loadedBoard[i][j] = "O ";
                 }
             }
         }
@@ -112,7 +109,7 @@ public class Game {
     }
 
     public void clear() {
-        this.board.loadBoard();
+        this.board.colBoard();
     }
 
     public void moveTest(String input) {
@@ -129,8 +126,7 @@ public class Game {
         this.colBoard();
         for (int i = 0; i < this.boardHeight; i++) {
             for (int j = 0; j < this.boardWidth; j++) {
-
-                System.out.print(this.colBoard[i][j]);
+                System.out.println(this.colBoard[i][j]);
             }
             System.out.println("");
         }
