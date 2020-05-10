@@ -16,17 +16,18 @@ public class App {
 
 
 
-//        Game game = new Game();
-//        game.init(10,20);
-//        game.printGame();
-//        Scanner scan = new Scanner(System.in);
-//        while(true){
-//            String input = scan.nextLine();
-//            if(input.equals("q")){
-//                break;
-//            }
-//            game.moveTest(input);
+        Game game = new Game();
+        game.init(10,20);
+//        game.printColBoard();
+        game.printGame();
+        Scanner scan = new Scanner(System.in);
+        while(true){
+            String input = scan.nextLine();
+            if(input.equals("q")){
+                break;
+            }
+            game.moveTest(input);
 //
-//        }
+        }
     }
 }
