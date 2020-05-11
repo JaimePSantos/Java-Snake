@@ -5,24 +5,20 @@ public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         Scanner scanner = new Scanner(System.in);
-        Board board = new Board();
-        board.setBoard(10, 40);
-        board.colBoard();
-        board.printColBoard();
+//        Board board = new Board();
+//        board.setBoard(10, 40);
+//        board.colBoard();
+//        board.printColBoard();
 
 
 //        board.loadBoard();
 //        board.printBoard();
 
 
-        Game game = new Game();
+        Game game = new Game(scanner);
         game.init(10, 10);
-//        game.printColBoard();
-        game.printGame();
-
-//        game.printColBoard();
-        Scanner scan = new Scanner(System.in);
-        game.moveTest(scan);
+//        game.printGame();
+        game.play();
 //
 
     }

@@ -2,31 +2,30 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
+    private Scanner scan;
     private Board board;
     private Snake snake;
     private int boardHeight;
     private int boardWidth;
     private String[][] loadedBoard;
     private int[][] colBoard;
-    private boolean gameOver;
 
-    public Game() {
+    public Game(Scanner scan) {
+        this.scan = scan;
         this.board = new Board();
         this.snake = new Snake();
         this.boardHeight = 0;
         this.boardWidth = 0;
         this.loadedBoard = new String[this.boardHeight][this.boardWidth];
         this.colBoard = new int[this.boardHeight][this.boardWidth];
-        this.gameOver = false;
     }
 
     public void init(int boardHeight, int boardWidth) {
         this.board.setBoard(boardHeight, boardWidth);
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
-        this.loadedBoard = this.board.loadBoard();
+        this.loadedBoard = new String[this.boardHeight][this.boardWidth];
         this.colBoard = this.board.colBoard();
-        this.gameOver = false;
         this.setSnake();
     }
 
@@ -45,16 +44,8 @@ public class Game {
                 } else {
                     this.colBoard[i][j] = 5;
                 }
-            } else if ( this.colBoard[i][j] == 1 || this.colBoard[i][j] == 2 || this.colBoard[i][j] == 3 ) {
-                this.gameOver = true;
             }
         }
-        return this.colBoard;
-    }
-
-    public int[][] gameOver() {
-
-        this.colBoard[0][0] = 99;
         return this.colBoard;
     }
 
@@ -62,9 +53,6 @@ public class Game {
         for (int i = 0; i < this.boardHeight; i++) {
             for (int j = 0; j < this.boardWidth; j++) {
                 this.colSnake(i, j);
-                if ( this.gameOver == true ) {
-                    return this.gameOver();
-                }
             }
         }
         return this.colBoard;
@@ -72,9 +60,6 @@ public class Game {
 
     public String[][] colRender() {
         this.colBoard();
-        if ( this.colBoard[0][0] == 99 ) {
-            this.loadedBoard[0][0] = "GameOver";
-        }
         for (int i = 0; i < this.boardHeight; i++) {
             for (int j = 0; j < this.boardWidth; j++) {
                 switch (this.colBoard[i][j]) {
@@ -101,28 +86,30 @@ public class Game {
         return this.loadedBoard;
     }
 
-    public void clear() {
-        this.board.colBoard();
-    }
 
-    public void moveTest(Scanner scan) {
-//        this.render();
+    public void play() {
         this.colRender();
         this.printGame();
         while (true) {
-            String input = scan.nextLine();
+            String input = this.scan.nextLine();
             if ( input.equals("q") ) {
                 break;
             }
             switch (this.checkAhead(input)) {
                 case -1:
-                    System.out.println("Game Over!");
+                    System.out.println("Game Over! Try again?");
+                    String yn = this.scan.nextLine().toLowerCase();
+                    if ( yn.equals("y") || yn.equals("yes") ) {
+                        this.clear();
+                        this.play();
+                    }
                     return;
                 case 0:
                     this.snake.move(input);
 
             }
             this.clear();
+//            this.moveTest();
             this.colRender();
             this.printGame();
         }
@@ -174,7 +161,6 @@ public class Game {
 
     public void printGame() {
         this.colRender();
-
         for (int i = 0; i < this.boardHeight; i++) {
             for (int j = 0; j < this.boardWidth; j++) {
                 System.out.print(this.loadedBoard[i][j]);
@@ -185,4 +171,7 @@ public class Game {
 
     }
 
+    public void clear() {
+        this.board.colBoard();
+    }
 }

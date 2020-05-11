@@ -1,9 +1,5 @@
-import com.sun.source.tree.UsesTree;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
 public class Snake {
     private List<Pair<Integer,Integer>> body;
@@ -65,6 +61,7 @@ public class Snake {
     }
 
     public void move(String input){
+
         if(input.equals("d")){
             this.direction.setY(1);
             this.direction.setX(0);
