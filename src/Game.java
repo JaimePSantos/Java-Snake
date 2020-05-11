@@ -7,7 +7,7 @@ public class Game {
     private Snake snake;
     private int boardHeight;
     private int boardWidth;
-    private String[][] loadedBoard;
+    private String[][] stringBoard;
     private int[][] colBoard;
 
     public Game(Scanner scan) {
@@ -16,7 +16,7 @@ public class Game {
         this.snake = new Snake();
         this.boardHeight = 0;
         this.boardWidth = 0;
-        this.loadedBoard = new String[this.boardHeight][this.boardWidth];
+        this.stringBoard = new String[this.boardHeight][this.boardWidth];
         this.colBoard = new int[this.boardHeight][this.boardWidth];
     }
 
@@ -24,7 +24,7 @@ public class Game {
         this.board.setBoard(boardHeight, boardWidth);
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
-        this.loadedBoard = new String[this.boardHeight][this.boardWidth];
+        this.stringBoard = new String[this.boardHeight][this.boardWidth];
         this.colBoard = this.board.colBoard();
         this.spawnSnake();
     }
@@ -64,26 +64,26 @@ public class Game {
             for (int j = 0; j < this.boardWidth; j++) {
                 switch (this.colBoard[i][j]) {
                     case 1:
-                        this.loadedBoard[i][j] = "+ ";
+                        this.stringBoard[i][j] = "+ ";
                         break;
                     case 2:
-                        this.loadedBoard[i][j] = "- ";
+                        this.stringBoard[i][j] = "- ";
                         break;
                     case 3:
-                        this.loadedBoard[i][j] = "| ";
+                        this.stringBoard[i][j] = "| ";
                         break;
                     case 4:
-                        this.loadedBoard[i][j] = "X ";
+                        this.stringBoard[i][j] = "X ";
                         break;
                     case 5:
-                        this.loadedBoard[i][j] = "O ";
+                        this.stringBoard[i][j] = "O ";
                         break;
                     default:
-                        this.loadedBoard[i][j] = "  ";
+                        this.stringBoard[i][j] = "  ";
                 }
             }
         }
-        return this.loadedBoard;
+        return this.stringBoard;
     }
 
 
@@ -164,7 +164,7 @@ public class Game {
         this.colRender();
         for (int i = 0; i < this.boardHeight; i++) {
             for (int j = 0; j < this.boardWidth; j++) {
-                System.out.print(this.loadedBoard[i][j]);
+                System.out.print(this.stringBoard[i][j]);
             }
             System.out.println("");
         }
