@@ -26,10 +26,10 @@ public class Game {
         this.boardHeight = boardHeight;
         this.loadedBoard = new String[this.boardHeight][this.boardWidth];
         this.colBoard = this.board.colBoard();
-        this.setSnake();
+        this.spawnSnake();
     }
 
-    public void setSnake() {
+    public void spawnSnake() {
         int x = ThreadLocalRandom.current().nextInt(1, this.boardWidth - 2);
         int y = ThreadLocalRandom.current().nextInt(1, this.boardHeight - 2);
         this.snake.initSnake(y, x);
@@ -101,6 +101,7 @@ public class Game {
                     String yn = this.scan.nextLine().toLowerCase();
                     if ( yn.equals("y") || yn.equals("yes") ) {
                         this.clear();
+                        this.spawnSnake();
                         this.play();
                     }
                     return;
@@ -109,7 +110,6 @@ public class Game {
 
             }
             this.clear();
-//            this.moveTest();
             this.colRender();
             this.printGame();
         }
@@ -145,6 +145,7 @@ public class Game {
                 dirY = 1;
                 break;
         }
+
         int snakeX = (int) this.snake.head().getX();
         int snakeY = (int) this.snake.head().getY();
         switch (this.colBoard[snakeX + dirX][snakeY + dirY]) {

@@ -25,10 +25,12 @@ public class Snake {
     }
 
     public void initSnake(int x ,int y){
-        this.grow(x,y);
+        this.body.clear();
+        this.grow(x, y);
         this.grow(x+1,y);
         this.grow(x+2,y);
     }
+
 
     public void grow(int x, int y){
         Pair pos = new Pair(x,y);
