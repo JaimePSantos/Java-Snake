@@ -1,9 +1,5 @@
-import com.sun.source.tree.UsesTree;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Scanner;
 
 public class Snake {
     private List<Pair<Integer,Integer>> body;
@@ -29,9 +25,12 @@ public class Snake {
     }
 
     public void initSnake(int x ,int y){
-        this.grow(x,y);
+        this.body.clear();
+        this.grow(x, y);
         this.grow(x+1,y);
+        this.grow(x+2,y);
     }
+
 
     public void grow(int x, int y){
         Pair pos = new Pair(x,y);
@@ -64,6 +63,7 @@ public class Snake {
     }
 
     public void move(String input){
+
         if(input.equals("d")){
             this.direction.setY(1);
             this.direction.setX(0);
@@ -71,7 +71,7 @@ public class Snake {
             this.direction.setY(0);
             this.direction.setX(-1);
 
-        }else if(input.equals("aw")){
+        }else if(input.equals("a")){
             this.direction.setY(-1);
             this.direction.setX(0);
 
@@ -85,6 +85,7 @@ public class Snake {
         int k = this.body.get(0).getY();
         this.takeStep(x+j,y+k);
     }
+
     public String toString(){
         String coords="";
         for(Pair pair : this.body){
