@@ -42,22 +42,26 @@ public class Snake {
     }
 
     public void takeStep(Integer x, Integer y){
-        Pair step = new Pair(x,y);
+        Pair step = new Pair(x, y);
         this.removeLast();
-        this.body.add(0,step);
+        this.body.add(0, step);
     }
 
-    public void setDirection(int x, int y){
-        Pair newDirection = new Pair(x,y);
+    public void setDirection(int x, int y) {
+        Pair newDirection = new Pair(x, y);
         this.direction = newDirection;
     }
 
-    public Pair head(){
+    public Pair getDirection() {
+        return this.direction;
+    }
+
+    public Pair head() {
         return this.body.get(0);
     }
 
-    public List<Pair<Integer,Integer>> getBody(){
-        List<Pair<Integer,Integer>> noHead = this.body;
+    public List<Pair<Integer, Integer>> getBody() {
+        List<Pair<Integer, Integer>> noHead = this.body;
         noHead.remove(0);
         return noHead;
     }
@@ -83,13 +87,37 @@ public class Snake {
         int y = this.direction.getY();
         int j = this.body.get(0).getX();
         int k = this.body.get(0).getY();
-        this.takeStep(x+j,y+k);
+        this.takeStep(x + j, y + k);
     }
 
-    public String toString(){
-        String coords="";
-        for(Pair pair : this.body){
-            coords += "(" + pair.getX() + ","+pair.getY()+")\n";
+    public void goAround(String input) {
+        if ( input.equals("d") ) {
+            this.direction.setY(1);
+            this.direction.setX(0);
+        } else if ( input.equals("w") ) {
+            this.direction.setY(0);
+            this.direction.setX(-1);
+
+        } else if ( input.equals("a") ) {
+            this.direction.setY(-1);
+            this.direction.setX(0);
+
+        } else if ( input.equals("s") ) {
+            this.direction.setY(0);
+            this.direction.setX(1);
+        }
+        int x = this.direction.getX();
+        int y = this.direction.getY();
+        int j = this.body.get(0).getX();
+        int k = this.body.get(0).getY();
+        this.takeStep(x + j, y + k);
+    }
+
+
+    public String toString() {
+        String coords = "";
+        for (Pair pair : this.body) {
+            coords += "(" + pair.getX() + "," + pair.getY() + ")\n";
         }
         return coords;
     }

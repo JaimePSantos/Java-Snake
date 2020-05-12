@@ -107,6 +107,14 @@ public class Game {
                     return;
                 case 0:
                     this.snake.move(input);
+                    break;
+                case -3:
+//                    int dirX = (int) this.snake.getDirection().getX();
+//                    int dirY = (int) this.snake.getDirection().getY();
+//                    int halfWidth = this.boardWidth / 2;
+//                    int headY = (int) this.snake.head().getY();
+//                    this.snake.takeStep(halfWidth + (halfWidth * (-dirX)) - dirX, headY);
+                    this.goAround(input);
 
             }
             this.clear();
@@ -151,8 +159,9 @@ public class Game {
         switch (this.colBoard[snakeX + dirX][snakeY + dirY]) {
             case 1:
             case 2:
-            case 3:
                 return -1;
+            case 3:
+                return -3;
             case 4:
                 return 1;
             default:
@@ -171,6 +180,35 @@ public class Game {
 
 
     }
+
+    public void goAround(String input) {
+        if ( input.equals("d") ) {
+            this.snake.getDirection().setY(1);
+            this.snake.getDirection().setX(0);
+        } else if ( input.equals("w") ) {
+            this.snake.getDirection().setY(0);
+            this.snake.getDirection().setX(-1);
+
+        } else if ( input.equals("a") ) {
+            this.snake.getDirection().setY(-1);
+            this.snake.getDirection().setX(0);
+
+        } else if ( input.equals("s") ) {
+            this.snake.getDirection().setY(0);
+            this.snake.getDirection().setX(1);
+        }
+        int halfWidth = this.boardHeight / 2;
+        int headY = (int) this.snake.head().getY();
+
+        int x = (int) this.snake.getDirection().getX();
+        int y = (int) this.snake.getDirection().getY();
+//        int j = (int) this.snake.head().getX();
+        int k = (int) this.snake.head().getY();
+
+        int xx = halfWidth + (halfWidth * (-x)) - x;
+        this.snake.takeStep(k, xx);
+    }
+
 
     public void clear() {
         this.board.colBoard();
