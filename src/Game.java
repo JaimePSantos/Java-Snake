@@ -111,6 +111,7 @@ public class Game {
             }
             this.clear();
             this.colRender();
+            this.printColBoard();
             this.printGame();
         }
 

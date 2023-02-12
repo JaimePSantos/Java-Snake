@@ -7,8 +7,6 @@ public class Board {
         this.height = 0;
         this.width = 0;
         this.colBoard = new int[this.height][this.width];
-
-
     }
 
     public void setBoard(int newHeight, int newWidth) {
